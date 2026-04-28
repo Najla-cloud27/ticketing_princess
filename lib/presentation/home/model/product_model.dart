@@ -1,22 +1,30 @@
 class ProductModel {
-  final String name;
+  final String namaProduk;
   final String typeProduk;
-  final int hargaPorduk;
+  final int hargaProduk;
   int quantity;
 
   ProductModel({
-    required this.name,
+    required this.namaProduk,
     required this.typeProduk,
-    required this.hargaPorduk,
+    required this.hargaProduk,
     this.quantity = 1,
   });
 }
 
 // bikin objek nya
 final produks = [
-  ProductModel(name: 'Bus A', typeProduk: 'Bus', hargaPorduk: 50000),
-  ProductModel(name: 'Bus B', typeProduk: 'Bus', hargaPorduk: 75000),
-  ProductModel(name: 'Bus C', typeProduk: 'Bus', hargaPorduk: 60000),
-  ProductModel(name: 'Waterpark', typeProduk: 'Waterpark', hargaPorduk: 70000),
-  ProductModel(name: 'Waterboom', typeProduk: 'Waterpark', hargaPorduk: 850000),
+  ProductModel(namaProduk: 'Bus A', typeProduk: 'Bus', hargaProduk: 50000),
+  ProductModel(namaProduk: 'Bus B', typeProduk: 'Bus', hargaProduk: 75000),
+  ProductModel(namaProduk: 'Bus C', typeProduk: 'Bus', hargaProduk: 60000),
+  ProductModel(
+    namaProduk: 'Waterpark',
+    typeProduk: 'Waterpark',
+    hargaProduk: 70000,
+  ),
+  ProductModel(
+    namaProduk: 'Waterboom',
+    typeProduk: 'Waterpark',
+    hargaProduk: 850000,
+  ),
 ];
