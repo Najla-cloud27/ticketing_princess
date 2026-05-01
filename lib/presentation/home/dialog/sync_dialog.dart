@@ -3,8 +3,8 @@ import 'package:ticketing_princes/core/components/components.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class SyncDialog extends StatelessWidget {
-  const SyncDialog({super.key});
+class SyncDataDialog extends StatelessWidget {
+  const SyncDataDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

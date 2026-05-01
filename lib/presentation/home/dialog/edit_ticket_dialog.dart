@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/core.dart';
 import 'package:ticketing_princes/presentation/home/model/product_model.dart';
 
-class EditingTicketDialog extends StatelessWidget {
+class EditTicketDialog extends StatelessWidget {
   final ProductModel itemProduk;
 
-  const EditingTicketDialog({super.key, required this.itemProduk});
+  const EditTicketDialog({super.key, required this.itemProduk});
 
   @override
   Widget build(BuildContext context) {

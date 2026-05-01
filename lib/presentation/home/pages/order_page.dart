@@ -1,6 +1,7 @@
 import 'package:dartz/dartz_streaming.dart' hide Text;
 import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/components/components.dart';
+import 'package:ticketing_princes/core/core.dart';
 import 'package:ticketing_princes/presentation/home/model/product_model.dart';
 import 'package:ticketing_princes/presentation/home/widget/order_card.dart';
 
@@ -23,7 +24,33 @@ class OrderPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(24),
-        child: Row(children: [Expanded(flex: 1, child: Column())]),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Order Summary'),
+                  Text(
+                    4000.currencyFormatRp,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Button.filled(
+                onPressed: () {
+                  context.pop();
+                },
+                label: 'Process',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
