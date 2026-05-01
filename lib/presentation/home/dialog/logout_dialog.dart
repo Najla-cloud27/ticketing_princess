@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/components/components.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:ticketing_princes/core/extensions/build_context_ext.dart';
-import 'package:ticketing_princes/presentation/auth/login.dart';
+import 'package:ticketing_princes/presentation/auth/pages/login.dart';
 
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});

@@ -1,7 +1,7 @@
 import 'package:ticketing_princes/core/assets/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/core.dart';
-import 'package:ticketing_princes/presentation/auth/login.dart';
+import 'package:ticketing_princes/presentation/auth/pages/login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

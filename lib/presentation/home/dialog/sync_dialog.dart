@@ -13,10 +13,10 @@ class SyncDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SpaceHeight(40),
-          SpinkKitDualRing(color: AppColors.primary, size: 80),
+          SpinKitDualRing(color: AppColors.primary, size: 80, lineWidth: 4),
           SpaceHeight(16),
           Text(
-            'Sycning Data...',
+            'Syncing data, please wait...',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
         ],
