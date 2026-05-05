@@ -1,11 +1,10 @@
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:print_bluetooth_thermal/print_bluetooth_thermal.dart';
+import 'package:ticketing_princes/presentation/home/model/printer_model.dart';
 
 class MenuPrinterContent extends StatelessWidget {
-  final BluetoothInfo data;
+  final PrinterModel data;
   final bool isSelected;
-
   const MenuPrinterContent({
     super.key,
     required this.data,
@@ -15,17 +14,17 @@ class MenuPrinterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(border: Border.all()),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Nama Printer: ${data.name}',
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           ),
           Text(
-            'Alamat MAC: ${data.macAdress}',
+            'Alamat: ${data.address}',
             style: TextStyle(
               fontSize: 12,
               color: AppColors.grey,
