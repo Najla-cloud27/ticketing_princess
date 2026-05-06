@@ -31,8 +31,10 @@ class OrderDetailPage extends StatelessWidget {
         itemBuilder: (context, index) =>
             OrderCardDetail(itemOrder: orders[index]),
         separatorBuilder: (context, index) => SpaceHeight(20),
+        // itemcount buat yang ngeluarin data nya saja
         itemCount: orders.length,
       ),
+      // disini ada 3 button, symetri horizontal dan statful Builder
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
@@ -54,7 +56,7 @@ class OrderDetailPage extends StatelessWidget {
                     child: PaymentMethodButton(
                       iconPath: Assets.icons.payment.tunai.path,
                       label: 'Tunai',
-                      isActive: paymentButtonIndex == 0,
+                      isActive: paymentButtonIndex == 1,
                       onPressed: () => setState(() => paymentButtonIndex = 1),
                     ),
                   ),
@@ -63,7 +65,7 @@ class OrderDetailPage extends StatelessWidget {
                     child: PaymentMethodButton(
                       iconPath: Assets.icons.payment.transfer.path,
                       label: 'Transfer',
-                      isActive: paymentButtonIndex == 0,
+                      isActive: paymentButtonIndex == 2,
                       onPressed: () => setState(() => paymentButtonIndex = 2),
                     ),
                   ),

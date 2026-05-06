@@ -84,6 +84,7 @@ class _SettingPrinterPageState extends State<SettingPrinterPage> {
 // Setiap widget harus ada build context
 // INI PRIVATE
 
+// biar si _body ini dia hanya bisa di setting printer page
 class _Body extends StatelessWidget {
   final int selectedIndex;
   final List<PrinterModel> dataPrinter;
