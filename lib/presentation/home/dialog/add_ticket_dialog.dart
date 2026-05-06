@@ -11,9 +11,12 @@ class AddTicketDialog extends StatelessWidget {
 
     final nameController = TextEditingController();
     final priceController = TextEditingController();
+
+    // Value Notifier itu tempat buat menyimpan sesuatu yang bkal berubah
     final categoryNotifier = ValueNotifier(category.first);
     final criteriaNotifier = ValueNotifier(criteria.first);
 
+    // int parseCurrency ini digunaakan ?
     int parseCurrency(String text) =>
         int.tryParse(text.replaceAll(RegExp(r'[^0-9]'), '')) ?? 0;
 
