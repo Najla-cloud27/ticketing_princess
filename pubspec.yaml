@@ -7,6 +7,7 @@ environment:
   sdk: ^3.11.5
 
 dependencies:
+  bloc: ^9.2.0
   connectivity_plus: ^7.1.1
   dartz: ^0.10.1
   esc_pos_utils_plus: ^2.0.4
@@ -34,7 +35,6 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   build_runner: ^2.14.1
-  flutter_gen_runner: ^5.14.0
   freezed: ^3.2.5
 
 flutter:

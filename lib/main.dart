@@ -1,5 +1,5 @@
 import 'package:ticketing_princes/core/constants/colors.dart';
-import 'package:ticketing_princes/presentation/auth/auth/pages/splash_screen.dart';
+import 'package:ticketing_princes/presentation/auth/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
