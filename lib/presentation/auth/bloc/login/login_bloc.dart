@@ -11,7 +11,7 @@ part 'login_bloc.freezed.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRemoteDatasource authRemoteDatasource;
   LoginBloc(this.authRemoteDatasource) : super(_Initial()) {
-    on<_Login>((event, emit) async {
+    on<_login>((event, emit) async {
       emit(_Loading());
       final dataRequest = LoginRequestModel(
         email: event.email,
@@ -23,7 +23,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         (error) => emit(_Error(error)),
         (data) => emit(_Success(data)),
       );
-      // TODO: implement event handler
     });
   }
 }

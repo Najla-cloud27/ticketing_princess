@@ -285,13 +285,13 @@ extension LogoutStatePatterns on LogoutState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( Error value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Success value)?  success,TResult Function( _Error value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial(_that);case Loading() when loading != null:
-return loading(_that);case Success() when success != null:
-return success(_that);case Error() when error != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Success() when success != null:
+return success(_that);case _Error() when error != null:
 return error(_that);case _:
   return orElse();
 
@@ -310,13 +310,13 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( Error value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Success value)  success,required TResult Function( _Error value)  error,}){
 final _that = this;
 switch (_that) {
 case _Initial():
-return initial(_that);case Loading():
-return loading(_that);case Success():
-return success(_that);case Error():
+return initial(_that);case _Loading():
+return loading(_that);case _Success():
+return success(_that);case _Error():
 return error(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -334,13 +334,13 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( Error value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Success value)?  success,TResult? Function( _Error value)?  error,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial(_that);case Loading() when loading != null:
-return loading(_that);case Success() when success != null:
-return success(_that);case Error() when error != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Success() when success != null:
+return success(_that);case _Error() when error != null:
 return error(_that);case _:
   return null;
 
@@ -361,9 +361,9 @@ return error(_that);case _:
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function()?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial();case Loading() when loading != null:
-return loading();case Success() when success != null:
-return success();case Error() when error != null:
+return initial();case _Loading() when loading != null:
+return loading();case _Success() when success != null:
+return success();case _Error() when error != null:
 return error(_that.message);case _:
   return orElse();
 
@@ -385,9 +385,9 @@ return error(_that.message);case _:
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function()  success,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
-return initial();case Loading():
-return loading();case Success():
-return success();case Error():
+return initial();case _Loading():
+return loading();case _Success():
+return success();case _Error():
 return error(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -408,9 +408,9 @@ return error(_that.message);case _:
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial();case Loading() when loading != null:
-return loading();case Success() when success != null:
-return success();case Error() when error != null:
+return initial();case _Loading() when loading != null:
+return loading();case _Success() when success != null:
+return success();case _Error() when error != null:
 return error(_that.message);case _:
   return null;
 
@@ -454,8 +454,8 @@ String toString() {
 /// @nodoc
 
 
-class Loading implements LogoutState {
-  const Loading();
+class _Loading implements LogoutState {
+  const _Loading();
   
 
 
@@ -465,7 +465,7 @@ class Loading implements LogoutState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loading);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -486,8 +486,8 @@ String toString() {
 /// @nodoc
 
 
-class Success implements LogoutState {
-  const Success();
+class _Success implements LogoutState {
+  const _Success();
   
 
 
@@ -497,7 +497,7 @@ class Success implements LogoutState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -518,8 +518,8 @@ String toString() {
 /// @nodoc
 
 
-class Error implements LogoutState {
-  const Error(this.message);
+class _Error implements LogoutState {
+  const _Error(this.message);
   
 
  final  String message;
@@ -528,13 +528,13 @@ class Error implements LogoutState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ErrorCopyWith<Error> get copyWith => _$ErrorCopyWithImpl<Error>(this, _$identity);
+_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Error&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.message, message) || other.message == message));
 }
 
 
@@ -550,8 +550,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class $ErrorCopyWith<$Res> implements $LogoutStateCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) _then) = _$ErrorCopyWithImpl;
+abstract mixin class _$ErrorCopyWith<$Res> implements $LogoutStateCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
 @useResult
 $Res call({
  String message
@@ -562,17 +562,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(this._self, this._then);
+class __$ErrorCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(this._self, this._then);
 
-  final Error _self;
-  final $Res Function(Error) _then;
+  final _Error _self;
+  final $Res Function(_Error) _then;
 
 /// Create a copy of LogoutState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(Error(
+  return _then(_Error(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));

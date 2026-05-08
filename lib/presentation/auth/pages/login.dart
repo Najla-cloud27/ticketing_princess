@@ -1,8 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticketing_princes/core/assets/assets.gen.dart';
 import 'package:ticketing_princes/core/components/components.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ticketing_princes/data/datasource/auth_local_datasource.dart';
+import 'package:ticketing_princes/presentation/auth/bloc/login/login_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -40,15 +43,52 @@ class LoginPage extends StatelessWidget {
                         controller: emailController,
                         label: 'Email',
                       ),
-                      const SpaceHeight(36),
+                      SpaceHeight(36),
                       CustomTextField(
                         controller: passwordController,
                         label: 'Password',
                         obscureText: true,
                       ),
-                      const SpaceHeight(84),
-                      Button.filled(onPressed: () {}, label: 'login'),
-                      const SpaceHeight(16),
+                      SpaceHeight(84),
+                      BlocListener<LoginBloc, LoginState>(
+                        listener: (context, state) {
+                          state.maybeWhen(
+                            orElse: () {},
+                            success: (data) async {
+                              await AuthLocalDatasource().saveAuthData(data);
+                            },
+                            error: (error) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(error),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: BlocBuilder<LoginBloc, LoginState>(
+                          builder: (context, state) {
+                            return state.maybeWhen(
+                              orElse: () {
+                                return Button.filled(
+                                  onPressed: () {
+                                    context.read<LoginBloc>().add(
+                                      LoginEvent.login(
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                      ),
+                                    );
+                                  },
+                                  label: 'login',
+                                );
+                              },
+                              loading: () =>
+                                  Center(child: CircularProgressIndicator()),
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
