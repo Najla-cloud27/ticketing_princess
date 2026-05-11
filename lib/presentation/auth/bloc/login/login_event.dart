@@ -8,3 +8,5 @@ class LoginEvent with _$LoginEvent {
     required String password,
   }) = _login;
 }
+
+// login event
