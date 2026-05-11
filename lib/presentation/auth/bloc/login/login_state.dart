@@ -8,3 +8,5 @@ class LoginState with _$LoginState {
       _Success;
   const factory LoginState.error(String message) = _Error;
 }
+
+// login  state ini adalah yang untuk perubahan ui

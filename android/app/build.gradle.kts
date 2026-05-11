@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.ticketing_princes"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

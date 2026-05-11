@@ -10,6 +10,7 @@ import 'package:ticketing_princes/data/model/response/auth_response_model.dart';
 class AuthLocalDatasource {
   // ini untuk menyimpan data autentikasi/buat simpan data login
   Future<void> saveAuthData(AuthResponseModel data) async {
+    // ambil instance dari shared prefrences. kayak buka lemari buat nyimpen barang
     final pref = await SharedPreferences.getInstance();
     await pref.setString('auth_data', data.toJson());
   }

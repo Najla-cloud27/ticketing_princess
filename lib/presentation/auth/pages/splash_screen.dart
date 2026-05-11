@@ -15,22 +15,23 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(
-      Duration(seconds: 2),
-
-      // pushReplacement = buat ganti halaman, jadi user ga bisa balik ke splash screen lagi
-      // pushreplacement to login page = itu menghapus halaman splash screem daro stack dan menggantinya dengan hlaman login
-      () => context.pushReplacement(LoginPage()),
-    );
-
     return Scaffold(
       body: FutureBuilder(
+        // FutureBuilder itu widget yang bisa membangun tampilan
+        // berdasarkan hasil dri sebuah future, jadi dia bakal nungguin future selesai,
+        // terus dia bakal bangun tampilan sesuai dengan hasilnya
         future: Future.delayed(
           Duration(seconds: 3),
           () => AuthLocalDatasource().isLogin(),
         ),
         builder: (context, snapshot) {
+          // snapshot itu hasil dari future
+          // snapshot laporan hasil dari pengecekan apakah user uda login atau belum
+          // jadi bisa di isi hasil apakah proses nya masih loading atau sudah selesai
+          // dtanya seperti apa atau errornya seperti apa ?
           if (snapshot.connectionState == ConnectionState.done) {
+            // snapshot.connectionstate itu buat cek status future
+            // snapshot.data itu hasil dari future, isinya true atau false
             if (snapshot.data == true) {
               return MainPage();
             } else {
@@ -51,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                   Spacer(),
                   Text(
-                    'Najla Ticketing',
+                    'Ticketing Princess',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   Center(

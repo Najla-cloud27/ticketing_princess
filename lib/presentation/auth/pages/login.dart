@@ -50,6 +50,8 @@ class LoginPage extends StatelessWidget {
                         obscureText: true,
                       ),
                       SpaceHeight(84),
+                      // bloclistener itu buat dengerin perubahan state dari bloc, kalo ada perubaham state dia bakal jalanin fungsi yang kita masukin ke listener
+                      // biasanya dipakai untuk aksi sekali jalan dan tidak handling perubhan ui, kayak pindah halaman, tampilkan snackbar, dialog, simpan ke token ke penyimpanan lokal,dll
                       BlocListener<LoginBloc, LoginState>(
                         listener: (context, state) {
                           state.maybeWhen(
@@ -67,6 +69,8 @@ class LoginPage extends StatelessWidget {
                             },
                           );
                         },
+                        // bloc builder ini untuk membangun ui berdasarkan state dari bloc
+                        // jadi kalau state berubah, dia bakal bangun ulang tampilan
                         child: BlocBuilder<LoginBloc, LoginState>(
                           builder: (context, state) {
                             return state.maybeWhen(

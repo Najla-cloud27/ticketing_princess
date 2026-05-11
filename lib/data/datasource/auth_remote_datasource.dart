@@ -27,7 +27,9 @@ class AuthRemoteDatasource {
   }
 
   // UNTUK LOGOUT
+  // either kita mau bikin 2 response untuk kanan dan kiri
   Future<Either<String, String>> logout() async {
+    // auth data ini buat menyimpan data prang yang login
     final authData = await AuthLocalDatasource().getAuthData();
     final response = await http.post(
       Uri.parse('${Variable.baseUrl}/api/logout'),

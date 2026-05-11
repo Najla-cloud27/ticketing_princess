@@ -8,6 +8,8 @@ part 'login_event.dart';
 part 'login_state.dart';
 part 'login_bloc.freezed.dart';
 
+// emit itu hanya cara kita panggil state.
+// event.emai; ini inputan user
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRemoteDatasource authRemoteDatasource;
   LoginBloc(this.authRemoteDatasource) : super(_Initial()) {
