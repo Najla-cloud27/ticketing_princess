@@ -38,12 +38,12 @@ class OrderCardDetail extends StatelessWidget {
             children: [
               Text(
                 // kalo mau memasukkan data yang berupa string atau tulisan itu pake dolar dan kurung kurawal
-                '${itemOrder.product.hargaProduk!.currencyFormatRp} x ${itemOrder.quantity}',
+                '${itemOrder.product.hargaProduk.currencyFormatRp} x ${itemOrder.quantity}',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
               ),
               Text(
                 // disini pakai tanda kurung karena mau menjumlahlan produk dan si quantity nya
-                (itemOrder.product.hargaProduk! * itemOrder.quantity)
+                (itemOrder.product.hargaProduk * itemOrder.quantity)
                     .currencyFormatRp,
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
               ),
