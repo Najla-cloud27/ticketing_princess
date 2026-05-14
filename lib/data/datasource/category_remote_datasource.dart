@@ -12,7 +12,7 @@ class CategoryRemoteDatasource {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${authData?.token}',
+        'Authorization': 'Bearer ${authData.token}',
       },
     );
 

@@ -16,7 +16,7 @@ class ProductRemoteDatasource {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${authData?.token}',
+        'Authorization': 'Bearer ${authData.token}',
       },
     );
 
@@ -38,7 +38,7 @@ class ProductRemoteDatasource {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${authData?.token}',
+        'Authorization': 'Bearer ${authData.token}',
       },
       body: model.toJson(),
     );
@@ -61,7 +61,7 @@ class ProductRemoteDatasource {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${authData?.token}',
+        'Authorization': 'Bearer ${authData.token}',
       },
       body: requestModel.toJson(),
     );
@@ -82,7 +82,7 @@ class ProductRemoteDatasource {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${authData?.token}',
+        'Authorization': 'Bearer ${authData.token}',
       },
     );
 
