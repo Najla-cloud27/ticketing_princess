@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_bloc.dart';
+part of 'history_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'login_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$LoginEvent {
+mixin _$HistoryEvent {
 
 
 
@@ -20,7 +20,7 @@ mixin _$LoginEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HistoryEvent);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginEvent()';
+  return 'HistoryEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $LoginEventCopyWith<$Res>  {
-$LoginEventCopyWith(LoginEvent _, $Res Function(LoginEvent) __);
+class $HistoryEventCopyWith<$Res>  {
+$HistoryEventCopyWith(HistoryEvent _, $Res Function(HistoryEvent) __);
 }
 
 
-/// Adds pattern-matching-related methods to [LoginEvent].
-extension LoginEventPatterns on LoginEvent {
+/// Adds pattern-matching-related methods to [HistoryEvent].
+extension HistoryEventPatterns on HistoryEvent {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -55,12 +55,12 @@ extension LoginEventPatterns on LoginEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _login value)?  login,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _GetHistory value)?  getHistory,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started(_that);case _login() when login != null:
-return login(_that);case _:
+return started(_that);case _GetHistory() when getHistory != null:
+return getHistory(_that);case _:
   return orElse();
 
 }
@@ -78,12 +78,12 @@ return login(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _login value)  login,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _GetHistory value)  getHistory,}){
 final _that = this;
 switch (_that) {
 case _Started():
-return started(_that);case _login():
-return login(_that);case _:
+return started(_that);case _GetHistory():
+return getHistory(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +100,12 @@ return login(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _login value)?  login,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _GetHistory value)?  getHistory,}){
 final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started(_that);case _login() when login != null:
-return login(_that);case _:
+return started(_that);case _GetHistory() when getHistory != null:
+return getHistory(_that);case _:
   return null;
 
 }
@@ -122,11 +122,11 @@ return login(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( String email,  String password)?  login,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getHistory,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started();case _login() when login != null:
-return login(_that.email,_that.password);case _:
+return started();case _GetHistory() when getHistory != null:
+return getHistory();case _:
   return orElse();
 
 }
@@ -144,11 +144,11 @@ return login(_that.email,_that.password);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( String email,  String password)  login,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getHistory,}) {final _that = this;
 switch (_that) {
 case _Started():
-return started();case _login():
-return login(_that.email,_that.password);case _:
+return started();case _GetHistory():
+return getHistory();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +165,11 @@ return login(_that.email,_that.password);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( String email,  String password)?  login,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getHistory,}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started();case _login() when login != null:
-return login(_that.email,_that.password);case _:
+return started();case _GetHistory() when getHistory != null:
+return getHistory();case _:
   return null;
 
 }
@@ -180,7 +180,7 @@ return login(_that.email,_that.password);case _:
 /// @nodoc
 
 
-class _Started implements LoginEvent {
+class _Started implements HistoryEvent {
   const _Started();
   
 
@@ -200,7 +200,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginEvent.started()';
+  return 'HistoryEvent.started()';
 }
 
 
@@ -212,73 +212,10 @@ String toString() {
 /// @nodoc
 
 
-class _login implements LoginEvent {
-  const _login({required this.email, required this.password});
+class _GetHistory implements HistoryEvent {
+  const _GetHistory();
   
 
- final  String email;
- final  String password;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$loginCopyWith<_login> get copyWith => __$loginCopyWithImpl<_login>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _login&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,email,password);
-
-@override
-String toString() {
-  return 'LoginEvent.login(email: $email, password: $password)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$loginCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
-  factory _$loginCopyWith(_login value, $Res Function(_login) _then) = __$loginCopyWithImpl;
-@useResult
-$Res call({
- String email, String password
-});
-
-
-
-
-}
-/// @nodoc
-class __$loginCopyWithImpl<$Res>
-    implements _$loginCopyWith<$Res> {
-  __$loginCopyWithImpl(this._self, this._then);
-
-  final _login _self;
-  final $Res Function(_login) _then;
-
-/// Create a copy of LoginEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? email = null,Object? password = null,}) {
-  return _then(_login(
-email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-mixin _$LoginState {
 
 
 
@@ -286,7 +223,7 @@ mixin _$LoginState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetHistory);
 }
 
 
@@ -295,20 +232,47 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState()';
+  return 'HistoryEvent.getHistory()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+mixin _$HistoryState {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HistoryState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HistoryState()';
 }
 
 
 }
 
 /// @nodoc
-class $LoginStateCopyWith<$Res>  {
-$LoginStateCopyWith(LoginState _, $Res Function(LoginState) __);
+class $HistoryStateCopyWith<$Res>  {
+$HistoryStateCopyWith(HistoryState _, $Res Function(HistoryState) __);
 }
 
 
-/// Adds pattern-matching-related methods to [LoginState].
-extension LoginStatePatterns on LoginState {
+/// Adds pattern-matching-related methods to [HistoryState].
+extension HistoryStatePatterns on HistoryState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -394,12 +358,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( AuthResponseModel authResponseModel)?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<OrderModel> histories)?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Success() when success != null:
-return success(_that.authResponseModel);case _Error() when error != null:
+return success(_that.histories);case _Error() when error != null:
 return error(_that.message);case _:
   return orElse();
 
@@ -418,12 +382,12 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( AuthResponseModel authResponseModel)  success,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<OrderModel> histories)  success,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
 return loading();case _Success():
-return success(_that.authResponseModel);case _Error():
+return success(_that.histories);case _Error():
 return error(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -441,12 +405,12 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( AuthResponseModel authResponseModel)?  success,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<OrderModel> histories)?  success,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Success() when success != null:
-return success(_that.authResponseModel);case _Error() when error != null:
+return success(_that.histories);case _Error() when error != null:
 return error(_that.message);case _:
   return null;
 
@@ -458,7 +422,7 @@ return error(_that.message);case _:
 /// @nodoc
 
 
-class _Initial implements LoginState {
+class _Initial implements HistoryState {
   const _Initial();
   
 
@@ -478,7 +442,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState.initial()';
+  return 'HistoryState.initial()';
 }
 
 
@@ -490,7 +454,7 @@ String toString() {
 /// @nodoc
 
 
-class _Loading implements LoginState {
+class _Loading implements HistoryState {
   const _Loading();
   
 
@@ -510,7 +474,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState.loading()';
+  return 'HistoryState.loading()';
 }
 
 
@@ -522,13 +486,19 @@ String toString() {
 /// @nodoc
 
 
-class _Success implements LoginState {
-  const _Success(this.authResponseModel);
+class _Success implements HistoryState {
+  const _Success(final  List<OrderModel> histories): _histories = histories;
   
 
- final  AuthResponseModel authResponseModel;
+ final  List<OrderModel> _histories;
+ List<OrderModel> get histories {
+  if (_histories is EqualUnmodifiableListView) return _histories;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_histories);
+}
 
-/// Create a copy of LoginState
+
+/// Create a copy of HistoryState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -538,27 +508,27 @@ _$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&const DeepCollectionEquality().equals(other.authResponseModel, authResponseModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&const DeepCollectionEquality().equals(other._histories, _histories));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(authResponseModel));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_histories));
 
 @override
 String toString() {
-  return 'LoginState.success(authResponseModel: $authResponseModel)';
+  return 'HistoryState.success(histories: $histories)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$SuccessCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+abstract mixin class _$SuccessCopyWith<$Res> implements $HistoryStateCopyWith<$Res> {
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
 @useResult
 $Res call({
- AuthResponseModel authResponseModel
+ List<OrderModel> histories
 });
 
 
@@ -573,12 +543,12 @@ class __$SuccessCopyWithImpl<$Res>
   final _Success _self;
   final $Res Function(_Success) _then;
 
-/// Create a copy of LoginState
+/// Create a copy of HistoryState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? authResponseModel = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? histories = null,}) {
   return _then(_Success(
-freezed == authResponseModel ? _self.authResponseModel : authResponseModel // ignore: cast_nullable_to_non_nullable
-as AuthResponseModel,
+null == histories ? _self._histories : histories // ignore: cast_nullable_to_non_nullable
+as List<OrderModel>,
   ));
 }
 
@@ -588,13 +558,13 @@ as AuthResponseModel,
 /// @nodoc
 
 
-class _Error implements LoginState {
+class _Error implements HistoryState {
   const _Error(this.message);
   
 
  final  String message;
 
-/// Create a copy of LoginState
+/// Create a copy of HistoryState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -613,14 +583,14 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'LoginState.error(message: $message)';
+  return 'HistoryState.error(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+abstract mixin class _$ErrorCopyWith<$Res> implements $HistoryStateCopyWith<$Res> {
   factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
 @useResult
 $Res call({
@@ -639,7 +609,7 @@ class __$ErrorCopyWithImpl<$Res>
   final _Error _self;
   final $Res Function(_Error) _then;
 
-/// Create a copy of LoginState
+/// Create a copy of HistoryState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(_Error(

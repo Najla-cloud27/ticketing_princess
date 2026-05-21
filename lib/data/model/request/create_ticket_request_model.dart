@@ -2,9 +2,9 @@ import 'dart:convert';
 
 class CreateTicketRequestModel {
   final String? name;
-  final String? price;
-  final String? stock;
-  final String? categoryId;
+  final int? price;
+  final int? stock;
+  final int? categoryId;
   final String? criteria;
 
   CreateTicketRequestModel({
