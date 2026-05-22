@@ -137,7 +137,7 @@ return deleteTicket(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getProducts,TResult Function()?  syncProducts,TResult Function()?  getLocalProducts,TResult Function( ProductResponseModel product)?  createTicket,TResult Function( ProductResponseModel product)?  updateTicket,TResult Function( int id)?  deleteTicket,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getProducts,TResult Function()?  syncProducts,TResult Function()?  getLocalProducts,TResult Function( Product product)?  createTicket,TResult Function( Product product)?  updateTicket,TResult Function( int id)?  deleteTicket,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
 return started();case _GetProducts() when getProducts != null:
@@ -164,7 +164,7 @@ return deleteTicket(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getProducts,required TResult Function()  syncProducts,required TResult Function()  getLocalProducts,required TResult Function( ProductResponseModel product)  createTicket,required TResult Function( ProductResponseModel product)  updateTicket,required TResult Function( int id)  deleteTicket,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getProducts,required TResult Function()  syncProducts,required TResult Function()  getLocalProducts,required TResult Function( Product product)  createTicket,required TResult Function( Product product)  updateTicket,required TResult Function( int id)  deleteTicket,}) {final _that = this;
 switch (_that) {
 case _Started():
 return started();case _GetProducts():
@@ -190,7 +190,7 @@ return deleteTicket(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getProducts,TResult? Function()?  syncProducts,TResult? Function()?  getLocalProducts,TResult? Function( ProductResponseModel product)?  createTicket,TResult? Function( ProductResponseModel product)?  updateTicket,TResult? Function( int id)?  deleteTicket,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getProducts,TResult? Function()?  syncProducts,TResult? Function()?  getLocalProducts,TResult? Function( Product product)?  createTicket,TResult? Function( Product product)?  updateTicket,TResult? Function( int id)?  deleteTicket,}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
 return started();case _GetProducts() when getProducts != null:
@@ -342,7 +342,7 @@ class _CreateTicket implements ProductEvent {
   const _CreateTicket(this.product);
   
 
- final  ProductResponseModel product;
+ final  Product product;
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -354,12 +354,12 @@ _$CreateTicketCopyWith<_CreateTicket> get copyWith => __$CreateTicketCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTicket&&const DeepCollectionEquality().equals(other.product, product));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTicket&&(identical(other.product, product) || other.product == product));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(product));
+int get hashCode => Object.hash(runtimeType,product);
 
 @override
 String toString() {
@@ -374,7 +374,7 @@ abstract mixin class _$CreateTicketCopyWith<$Res> implements $ProductEventCopyWi
   factory _$CreateTicketCopyWith(_CreateTicket value, $Res Function(_CreateTicket) _then) = __$CreateTicketCopyWithImpl;
 @useResult
 $Res call({
- ProductResponseModel product
+ Product product
 });
 
 
@@ -391,10 +391,10 @@ class __$CreateTicketCopyWithImpl<$Res>
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? product = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? product = null,}) {
   return _then(_CreateTicket(
-freezed == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
-as ProductResponseModel,
+null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
+as Product,
   ));
 }
 
@@ -408,7 +408,7 @@ class _UpdateTicket implements ProductEvent {
   const _UpdateTicket(this.product);
   
 
- final  ProductResponseModel product;
+ final  Product product;
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -420,12 +420,12 @@ _$UpdateTicketCopyWith<_UpdateTicket> get copyWith => __$UpdateTicketCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateTicket&&const DeepCollectionEquality().equals(other.product, product));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateTicket&&(identical(other.product, product) || other.product == product));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(product));
+int get hashCode => Object.hash(runtimeType,product);
 
 @override
 String toString() {
@@ -440,7 +440,7 @@ abstract mixin class _$UpdateTicketCopyWith<$Res> implements $ProductEventCopyWi
   factory _$UpdateTicketCopyWith(_UpdateTicket value, $Res Function(_UpdateTicket) _then) = __$UpdateTicketCopyWithImpl;
 @useResult
 $Res call({
- ProductResponseModel product
+ Product product
 });
 
 
@@ -457,10 +457,10 @@ class __$UpdateTicketCopyWithImpl<$Res>
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? product = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? product = null,}) {
   return _then(_UpdateTicket(
-freezed == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
-as ProductResponseModel,
+null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
+as Product,
   ));
 }
 

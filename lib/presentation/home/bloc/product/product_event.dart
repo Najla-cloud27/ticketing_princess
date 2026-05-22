@@ -8,10 +8,7 @@ class ProductEvent with _$ProductEvent {
   const factory ProductEvent.getLocalProducts() = _GetProductsLocal;
 
   // add ticket
-  const factory ProductEvent.createTicket(ProductResponseModel product) =
-      _CreateTicket;
-
-  const factory ProductEvent.updateTicket(ProductResponseModel product) =
-      _UpdateTicket;
+  const factory ProductEvent.createTicket(Product product) = _CreateTicket;
+  const factory ProductEvent.updateTicket(Product product) = _UpdateTicket;
   const factory ProductEvent.deleteTicket(int id) = _DeleteTicket;
 }

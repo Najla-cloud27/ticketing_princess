@@ -50,7 +50,7 @@ class ProductRemoteDatasource {
     }
   }
 
-  Future<Either<String, CreateTicketResponseModel>> productTicket(
+  Future<Either<String, CreateTicketResponseModel>> updateTicket(
     CreateTicketRequestModel requestModel,
     int id,
   ) async {

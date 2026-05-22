@@ -538,12 +538,12 @@ _$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&const DeepCollectionEquality().equals(other.authResponseModel, authResponseModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.authResponseModel, authResponseModel) || other.authResponseModel == authResponseModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(authResponseModel));
+int get hashCode => Object.hash(runtimeType,authResponseModel);
 
 @override
 String toString() {
@@ -575,9 +575,9 @@ class __$SuccessCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? authResponseModel = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? authResponseModel = null,}) {
   return _then(_Success(
-freezed == authResponseModel ? _self.authResponseModel : authResponseModel // ignore: cast_nullable_to_non_nullable
+null == authResponseModel ? _self.authResponseModel : authResponseModel // ignore: cast_nullable_to_non_nullable
 as AuthResponseModel,
   ));
 }

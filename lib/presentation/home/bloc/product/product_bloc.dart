@@ -13,82 +13,56 @@ part 'product_bloc.freezed.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRemoteDatasource productRemoteDatasource;
   final ProductLocalDatasource productLocalDatasource;
-
-  List<ProductResponseModel> products = [];
-
   ProductBloc(this.productRemoteDatasource, this.productLocalDatasource)
-    : super(const _Initial()) {
-    // GET PRODUCTS FROM API
+    : super(_Initial()) {
+    List<Product> products = [];
+
     on<_GetProducts>((event, emit) async {
-      emit(const _Loading());
-
+      emit(_Loading());
       final response = await productRemoteDatasource.getProduct();
-
       response.fold(
-        (error) {
-          emit(_Error(error));
-        },
-        (data) {
-          products = data.data ?? [];
-          emit(_Success(products));
-        },
+        (error) => emit(_Error(error)),
+        (data) => emit(_Success(data.data ?? [])),
       );
     });
 
-    // SYNC PRODUCTS
     on<_SyncProducts>((event, emit) async {
-      emit(const _Loading());
-
-      final connectivityResult = await Connectivity().checkConnectivity();
-
+      final List<ConnectivityResult> connectivityResult = await (Connectivity()
+          .checkConnectivity());
       if (connectivityResult.contains(ConnectivityResult.none)) {
-        emit(const _Error('Tidak ada koneksi internet'));
-        return;
+        emit(_Error('Ga ada internet cuy'));
+      } else {
+        emit(_Loading());
+        final response = await productRemoteDatasource.getProduct();
+        productLocalDatasource.removeAllProduct();
+        productLocalDatasource.insertAllProducts(
+          response.getOrElse(() => ProductResponseModel(data: [])).data ?? [],
+        );
+        products =
+            response.getOrElse(() => ProductResponseModel(data: [])).data ?? [];
+        emit(_Success(products));
       }
-
-      final response = await productRemoteDatasource.getProduct();
-
-      response.fold(
-        (error) {
-          emit(_Error(error));
-        },
-        (data) async {
-          final productData = data.data ?? [];
-
-          // Hapus local data lama
-          await productLocalDatasource.removeAllProduct();
-
-          // Simpan data baru
-          await productLocalDatasource.insertAllProducts(productData);
-
-          products = productData;
-
-          emit(_Success(products));
-        },
-      );
     });
 
-    // GET LOCAL PRODUCTS
     on<_GetProductsLocal>((event, emit) async {
-      emit(const _Loading());
-
+      emit(_Loading());
       final localProducts = await productLocalDatasource.getAllProducts();
-
       products = localProducts;
-
       emit(_Success(products));
     });
 
+    // Create Ticket
     on<_CreateTicket>((event, emit) async {
       emit(_Loading());
       final requestData = CreateTicketRequestModel(
-        name: event.model.name,
-        price: event.model.price,
-        stock: event.model.stock,
-        categoryId: event.model.categoryId,
-        criteria: event.model.criteria!.toLowerCase(),
+        name: event.product.name,
+        price: event.product.price,
+        stock: event.product.stock,
+        categoryId: event.product.categoryId,
+        criteria: event.product.criteria!.toLowerCase(),
       );
       final response = await productRemoteDatasource.createTicket(requestData);
+
       response.fold((error) => emit(_Error(error)), (data) {
         products.add(data.data);
         emit(_Success(products));
@@ -96,46 +70,36 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     });
 
     on<_UpdateTicket>((event, emit) async {
+      emit(_Loading());
       final requestData = CreateTicketRequestModel(
-        name: event.model.name,
-        price: event.model.price,
-        stock: event.model.stock,
-        categoryId: event.model.categoryId,
-        criteria: event.model.criteria!.toLowerCase(),
+        name: event.product.name,
+        price: event.product.price,
+        stock: event.product.stock,
       );
       final response = await productRemoteDatasource.updateTicket(
         requestData,
-        event.model.id!,
+        event.product.id!,
       );
 
       response.fold((error) => emit(_Error(error)), (success) {
-        final updateProduct = products.map((product) {
-          if (product.id == event.model.id) {
-            return success.data as Product;
+        final updateProduct = products.map((products) {
+          if (products.id == event.product.id) {
+            return success.data;
           }
-          return product;
+          return success.data;
         }).toList();
-        products = updateProduct;
+        products = List<Product>.from(updateProduct);
         emit(_Success(products));
       });
     });
 
-    // DELETE TICKET
     on<_DeleteTicket>((event, emit) async {
-      emit(const _Loading());
-
+      emit(_Loading());
       final response = await productRemoteDatasource.deleteTicket(event.id);
-
-      response.fold(
-        (error) {
-          emit(_Error(error));
-        },
-        (_) {
-          products.removeWhere((product) => product.id == event.id);
-
-          emit(_Success(List.from(products)));
-        },
-      );
+      response.fold((error) => emit(_Error(error)), (success) {
+        products.removeWhere((products) => products.id == event.id);
+        emit(_Success(products));
+      });
     });
   }
 }
