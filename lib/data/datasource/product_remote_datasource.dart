@@ -7,6 +7,8 @@ import 'package:ticketing_princes/data/model/request/create_ticket_request_model
 import 'package:ticketing_princes/data/model/response/create_ticket_response_model.dart';
 import 'package:ticketing_princes/data/model/response/product_reponse_model.dart';
 
+// response dri produk isinya cuman data, dan status isinya berhasil,
+
 class ProductRemoteDatasource {
   Future<Either<String, ProductResponseModel>> getProduct() async {
     final authData = await AuthLocalDatasource().getAuthData();
@@ -33,7 +35,7 @@ class ProductRemoteDatasource {
   ) async {
     final authData = await AuthLocalDatasource().getAuthData();
 
-    final response = await http.put(
+    final response = await http.post(
       Uri.parse('${Variable.baseUrl}/api/api-products'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -50,6 +52,7 @@ class ProductRemoteDatasource {
     }
   }
 
+  // buat update data produk
   Future<Either<String, CreateTicketResponseModel>> updateTicket(
     CreateTicketRequestModel requestModel,
     int id,
@@ -57,7 +60,7 @@ class ProductRemoteDatasource {
     final authData = await AuthLocalDatasource().getAuthData();
 
     final response = await http.patch(
-      Uri.parse('${Variable.baseUrl}/api/api-products'),
+      Uri.parse('${Variable.baseUrl}/api/api-products/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
@@ -89,6 +92,7 @@ class ProductRemoteDatasource {
     if (response.statusCode == 200) {
       return const Right("delete berhasil");
     } else {
+      // ini itu menghandalkan sesuatu dari api nya, dia akan yang memberikan response di postman nya
       return Left(response.body);
     }
   }
