@@ -6,7 +6,7 @@ import 'package:ticketing_princes/data/datasource/order_remote_datasource.dart';
 import 'package:ticketing_princes/data/datasource/product_local_datasource.dart';
 import 'package:ticketing_princes/data/datasource/product_remote_datasource.dart';
 import 'package:ticketing_princes/presentation/auth/bloc/login/login_bloc.dart';
-import 'package:ticketing_princes/presentation/auth/bloc/logout_bloc.dart';
+import 'package:ticketing_princes/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:ticketing_princes/presentation/auth/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

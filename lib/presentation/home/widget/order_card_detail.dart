@@ -2,12 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:ticketing_princes/core/components/spaces.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:ticketing_princes/core/extensions/extensions.dart';
-import 'package:ticketing_princes/presentation/home/model/order_model.dart';
+import 'package:ticketing_princes/presentation/home/model/order_item_model.dart';
 
 class OrderCardDetail extends StatelessWidget {
-  final OrderModel itemOrder;
+  final OrderItem item;
 
-  const OrderCardDetail({super.key, required this.itemOrder});
+  const OrderCardDetail({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class OrderCardDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            itemOrder.product.namaProduk,
+            item.product.name ?? '',
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           Text(
-            itemOrder.product.typeProduk,
+            item.product.category?.name ?? '',
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
@@ -38,13 +38,12 @@ class OrderCardDetail extends StatelessWidget {
             children: [
               Text(
                 // kalo mau memasukkan data yang berupa string atau tulisan itu pake dolar dan kurung kurawal
-                '${itemOrder.product.hargaProduk.currencyFormatRp} x ${itemOrder.quantity}',
+                '${item.product.price!.currencyFormatRp} x ${item.quantity}',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
               ),
               Text(
                 // disini pakai tanda kurung karena mau menjumlahlan produk dan si quantity nya
-                (itemOrder.product.hargaProduk * itemOrder.quantity)
-                    .currencyFormatRp,
+                (item.product.price! * item.quantity).currencyFormatRp,
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
               ),
             ],

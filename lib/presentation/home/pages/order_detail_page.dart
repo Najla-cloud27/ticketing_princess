@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/core.dart';
 import 'package:ticketing_princes/presentation/home/dialog/payment_cash_dialog.dart';
 import 'package:ticketing_princes/presentation/home/dialog/payment_qris_dialog.dart';
-import 'package:ticketing_princes/presentation/home/model/order_model.dart';
+// import 'package:ticketing_princes/presentation/home/model/order_model.dart';
 import 'package:ticketing_princes/presentation/home/model/product_model.dart';
-import 'package:ticketing_princes/presentation/home/widget/order_card_detail.dart';
+// import 'package:ticketing_princes/presentation/home/widget/order_card_detail.dart';
 import 'package:ticketing_princes/presentation/home/widget/payment_method.dart';
 
 class OrderDetailPage extends StatelessWidget {
@@ -27,13 +27,13 @@ class OrderDetailPage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.separated(
-        itemBuilder: (context, index) =>
-            OrderCardDetail(itemOrder: orders[index]),
-        separatorBuilder: (context, index) => SpaceHeight(20),
-        // itemcount buat yang ngeluarin data nya saja
-        itemCount: orders.length,
-      ),
+      // body: ListView.separated(
+      //   itemBuilder: (context, index) =>
+      //       OrderCardDetail(item: produks[index]),
+      //   separatorBuilder: (context, index) => SpaceHeight(20),
+      //   // itemcount buat yang ngeluarin data nya saja
+      //   itemCount: orders.length,
+      // ),
       // disini ada 3 button, symetri horizontal dan statful Builder
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
