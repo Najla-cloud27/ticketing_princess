@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/components/components.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:ticketing_princes/core/extensions/build_context_ext.dart';
+import 'package:ticketing_princes/data/datasource/auth_local_datasource.dart';
 import 'package:ticketing_princes/presentation/auth/pages/login.dart';
+import 'package:ticketing_princes/presentation/auth/pages/splash_screen.dart';
 
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});
@@ -43,8 +45,10 @@ class LogoutDialog extends StatelessWidget {
               SpaceWidth(12),
               Flexible(
                 child: Button.filled(
-                  onPressed: () {
-                    context.pushAndRemoveUntil(LoginPage(), (route) => false);
+                  onPressed: () async {
+                    context.pop();
+                    await AuthLocalDatasource().removeAuthData();
+                    context.pushReplacement(SplashScreen());
                   },
                   label: 'Logout',
                   borderRadius: 8,

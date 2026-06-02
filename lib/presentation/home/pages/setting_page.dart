@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ticketing_princes/core/assets/assets.gen.dart';
+import 'package:ticketing_princes/presentation/auth/bloc/logout/logout_bloc.dart';
+import 'package:ticketing_princes/presentation/auth/pages/login.dart';
 import 'package:ticketing_princes/presentation/home/dialog/logout_dialog.dart';
 import 'package:ticketing_princes/presentation/home/dialog/sync_dialog.dart';
 import 'package:ticketing_princes/presentation/home/widget/setting_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -23,16 +26,30 @@ class SettingPage extends StatelessWidget {
             subtitle: 'Kelola Printer',
             onPressed: () {},
           ),
-          SettingButton(
-            iconPath: Assets.icons.settings.logout.path,
-            title: 'Logout',
-            subtitle: 'Kelola dari akun',
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => LogoutDialog(),
+          BlocListener<LogoutBloc, LogoutState>(
+            listener: (context, state) {
+              // ini buat biar kita ga nulis kondisi di semua state
+              // pakai maybeWhen buat ngehandle semua kondisi supaya tidak harus nulis kondisi untuk loading, error, success, dll
+              state.maybeWhen(
+                success: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                },
+                orElse: () {},
               );
             },
+            child: SettingButton(
+              iconPath: Assets.icons.settings.logout.path,
+              title: 'Logout',
+              subtitle: 'Keluar dari akun',
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => LogoutDialog(),
+                );
+              },
+            ),
           ),
           SettingButton(
             iconPath: Assets.icons.settings.syncData.path,
