@@ -4,10 +4,10 @@ import 'package:ticketing_princes/core/assets/assets.gen.dart';
 import 'package:ticketing_princes/core/components/components.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:ticketing_princes/core/extensions/extensions.dart';
-import 'package:ticketing_princes/presentation/home/model/product_model.dart';
+import 'package:ticketing_princes/data/model/response/product_reponse_model.dart';
 
 class OrderCard extends StatelessWidget {
-  final ProductModel itemProduk;
+  final Product itemProduk;
   const OrderCard({super.key, required this.itemProduk});
 
   @override
@@ -26,7 +26,7 @@ class OrderCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  itemProduk.namaProduk,
+                  itemProduk.name ?? '',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),
@@ -53,7 +53,7 @@ class OrderCard extends StatelessWidget {
             ],
           ),
           Text(
-            itemProduk.typeProduk,
+            itemProduk.category?.name ?? '',
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w400,
@@ -65,14 +65,14 @@ class OrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                itemProduk.hargaProduk.currencyFormatRp,
+                itemProduk.price!.currencyFormatRp,
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
               ),
               // panggil disini karna dia bukan data dummy, krna dia ini perubahan ui nya
               ValueListenableBuilder(
                 valueListenable: quantityNotifier,
                 builder: (context, value, child) => Text(
-                  (itemProduk.hargaProduk * value).currencyFormatRp,
+                  (itemProduk.price! * value).currencyFormatRp,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                 ),
               ),
