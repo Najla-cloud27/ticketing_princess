@@ -35,6 +35,7 @@ class MainApp extends StatelessWidget {
             ProductRemoteDatasource(),
             ProductLocalDatasource.instance,
           )..add(ProductEvent.syncProducts()),
+          
         ),
         BlocProvider(create: (context) => CheckoutBloc()),
         BlocProvider(create: (context) => OrderBloc()),

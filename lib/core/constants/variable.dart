@@ -1,3 +1,3 @@
 class Variable {
-  static const String baseUrl = 'http://172.16.4.184:8000/';
+  static const String baseUrl = 'http://10.0.2.2:8000';
 }

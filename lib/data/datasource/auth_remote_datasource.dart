@@ -1,4 +1,5 @@
 // Di file ini Buat menghandling puclic function buat login logout dan register
+import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:ticketing_princes/core/constants/variable.dart';
 import 'package:ticketing_princes/data/datasource/auth_local_datasource.dart';
@@ -16,14 +17,14 @@ class AuthRemoteDatasource {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
       },
-      body: dataLogin.toJson(),
+      body: jsonEncode(dataLogin.toJson()),
     );
 
     print(response.statusCode);
     print(response.body);
 
     if (response.statusCode == 200) {
-      return Right(AuthResponseModel.fromJson(response.body));
+      return Right(AuthResponseModel.fromJson(jsonDecode(response.body)));
     } else {
       return left(response.body);
     }

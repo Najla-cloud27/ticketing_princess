@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticketing_princes/core/core.dart';
-import 'package:ticketing_princes/presentation/home/model/product_model.dart';
+import 'package:ticketing_princes/data/model/response/product_reponse_model.dart';
+import 'package:ticketing_princes/presentation/home/bloc/product/product_bloc.dart';
 
 class EditTicketDialog extends StatelessWidget {
-  final ProductModel itemProduk;
+  final Product itemProduk;
 
   const EditTicketDialog({super.key, required this.itemProduk});
 
   @override
   Widget build(BuildContext context) {
-    final nameController = TextEditingController(text: itemProduk.namaProduk);
+    final nameController = TextEditingController(text: itemProduk.name);
 
     final priceController = TextEditingController(
-      text: itemProduk.hargaProduk.currencyFormatRp,
+      text: itemProduk.price!.currencyFormatRp,
     );
 
     int parseCurrency(String text) =>
@@ -56,10 +58,21 @@ class EditTicketDialog extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                SpaceWidth(40),
+                SpaceWidth(10),
                 Flexible(
                   child: Button.filled(
-                    onPressed: () => context.pop(),
+                    onPressed: () {
+                      context.read<ProductBloc>().add(
+                        ProductEvent.updateTicket(
+                          Product(
+                            id: itemProduk.id,
+                            name: nameController.text,
+                            price: parseCurrency(priceController.text),
+                          ),
+                        ),
+                      );
+                      context.pop();
+                    },
                     label: 'Simpan',
                     borderRadius: 8,
                   ),
