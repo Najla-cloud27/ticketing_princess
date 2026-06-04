@@ -28,5 +28,30 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
         emit(_Success([OrderItem(product: event.product, quantity: 1)]));
       }
     });
+
+    on<_RemoveCheckout>((event, emit) {
+      if (state is _Success) {
+        final currentState = state as _Success;
+        List<OrderItem> products = [...currentState.products];
+        final index = products.indexWhere(
+          (element) => element.product.id == event.product.id,
+        );
+
+        if (index >= 0) {
+          if (products[index].quantity > 1) {
+            products[index].quantity -= 1;
+          } else {
+            products.removeAt(index);
+          }
+          emit(_Loading());
+          emit(_Success(products));
+        }
+      }
+    });
+
+    on<_Started>((event, emit) {
+      emit(_Loading());
+      emit(_Success([]));
+    });
   }
 }

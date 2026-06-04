@@ -55,11 +55,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<_CreateTicket>((event, emit) async {
       emit(_Loading());
       final requestData = CreateTicketRequestModel(
-        name: event.product.name,
-        price: event.product.price,
-        stock: event.product.stock,
-        categoryId: event.product.categoryId,
-        criteria: event.product.criteria!.toLowerCase(),
+        name: event.model.name,
+        price: event.model.price,
+        stock: event.model.stock,
+        categoryId: event.model.categoryId,
+        criteria: event.model.criteria!.toLowerCase(),
       );
       final response = await productRemoteDatasource.createTicket(requestData);
 
@@ -72,23 +72,37 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<_UpdateTicket>((event, emit) async {
       emit(_Loading());
       final requestData = CreateTicketRequestModel(
-        name: event.product.name,
-        price: event.product.price,
+        name: event.model.name,
+        price: event.model.price,
+        stock: event.model.stock,
+        categoryId: event.model.categoryId,
+        criteria: event.model.criteria!.toLowerCase(),
       );
       final response = await productRemoteDatasource.updateTicket(
         requestData,
-        event.product.id!,
+        event.model.id!,
       );
 
       response.fold((error) => emit(_Error(error)), (success) {
-        final updateProduct = products.map((products) {
-          if (products.id == event.product.id) {
-            return success.data;
+        final updatedProducts = products.map((oldProduct) {
+          if (oldProduct.id == event.model.id) {
+            return Product(
+              id: oldProduct.id,
+              name: event.model.name,
+              price: event.model.price,
+              category: oldProduct.category,
+              categoryId: oldProduct.categoryId,
+              createdAt: oldProduct.createdAt,
+              updatedAt: oldProduct.updatedAt,
+            );
           }
-          return success.data;
+
+          return oldProduct;
         }).toList();
-        products = List<Product>.from(updateProduct);
-        emit(_Success(products));
+
+        products = updatedProducts;
+
+        emit(_Success(updatedProducts));
       });
     });
 

@@ -137,15 +137,15 @@ return deleteTicket(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getProducts,TResult Function()?  syncProducts,TResult Function()?  getLocalProducts,TResult Function( Product product)?  createTicket,TResult Function( Product product)?  updateTicket,TResult Function( int id)?  deleteTicket,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getProducts,TResult Function()?  syncProducts,TResult Function()?  getLocalProducts,TResult Function( Product model)?  createTicket,TResult Function( Product model)?  updateTicket,TResult Function( int id)?  deleteTicket,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
 return started();case _GetProducts() when getProducts != null:
 return getProducts();case _SyncProducts() when syncProducts != null:
 return syncProducts();case _GetProductsLocal() when getLocalProducts != null:
 return getLocalProducts();case _CreateTicket() when createTicket != null:
-return createTicket(_that.product);case _UpdateTicket() when updateTicket != null:
-return updateTicket(_that.product);case _DeleteTicket() when deleteTicket != null:
+return createTicket(_that.model);case _UpdateTicket() when updateTicket != null:
+return updateTicket(_that.model);case _DeleteTicket() when deleteTicket != null:
 return deleteTicket(_that.id);case _:
   return orElse();
 
@@ -164,15 +164,15 @@ return deleteTicket(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getProducts,required TResult Function()  syncProducts,required TResult Function()  getLocalProducts,required TResult Function( Product product)  createTicket,required TResult Function( Product product)  updateTicket,required TResult Function( int id)  deleteTicket,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getProducts,required TResult Function()  syncProducts,required TResult Function()  getLocalProducts,required TResult Function( Product model)  createTicket,required TResult Function( Product model)  updateTicket,required TResult Function( int id)  deleteTicket,}) {final _that = this;
 switch (_that) {
 case _Started():
 return started();case _GetProducts():
 return getProducts();case _SyncProducts():
 return syncProducts();case _GetProductsLocal():
 return getLocalProducts();case _CreateTicket():
-return createTicket(_that.product);case _UpdateTicket():
-return updateTicket(_that.product);case _DeleteTicket():
+return createTicket(_that.model);case _UpdateTicket():
+return updateTicket(_that.model);case _DeleteTicket():
 return deleteTicket(_that.id);case _:
   throw StateError('Unexpected subclass');
 
@@ -190,15 +190,15 @@ return deleteTicket(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getProducts,TResult? Function()?  syncProducts,TResult? Function()?  getLocalProducts,TResult? Function( Product product)?  createTicket,TResult? Function( Product product)?  updateTicket,TResult? Function( int id)?  deleteTicket,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getProducts,TResult? Function()?  syncProducts,TResult? Function()?  getLocalProducts,TResult? Function( Product model)?  createTicket,TResult? Function( Product model)?  updateTicket,TResult? Function( int id)?  deleteTicket,}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
 return started();case _GetProducts() when getProducts != null:
 return getProducts();case _SyncProducts() when syncProducts != null:
 return syncProducts();case _GetProductsLocal() when getLocalProducts != null:
 return getLocalProducts();case _CreateTicket() when createTicket != null:
-return createTicket(_that.product);case _UpdateTicket() when updateTicket != null:
-return updateTicket(_that.product);case _DeleteTicket() when deleteTicket != null:
+return createTicket(_that.model);case _UpdateTicket() when updateTicket != null:
+return updateTicket(_that.model);case _DeleteTicket() when deleteTicket != null:
 return deleteTicket(_that.id);case _:
   return null;
 
@@ -339,10 +339,10 @@ String toString() {
 
 
 class _CreateTicket implements ProductEvent {
-  const _CreateTicket(this.product);
+  const _CreateTicket(this.model);
   
 
- final  Product product;
+ final  Product model;
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -354,16 +354,16 @@ _$CreateTicketCopyWith<_CreateTicket> get copyWith => __$CreateTicketCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTicket&&(identical(other.product, product) || other.product == product));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTicket&&(identical(other.model, model) || other.model == model));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,product);
+int get hashCode => Object.hash(runtimeType,model);
 
 @override
 String toString() {
-  return 'ProductEvent.createTicket(product: $product)';
+  return 'ProductEvent.createTicket(model: $model)';
 }
 
 
@@ -374,7 +374,7 @@ abstract mixin class _$CreateTicketCopyWith<$Res> implements $ProductEventCopyWi
   factory _$CreateTicketCopyWith(_CreateTicket value, $Res Function(_CreateTicket) _then) = __$CreateTicketCopyWithImpl;
 @useResult
 $Res call({
- Product product
+ Product model
 });
 
 
@@ -391,9 +391,9 @@ class __$CreateTicketCopyWithImpl<$Res>
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? product = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? model = null,}) {
   return _then(_CreateTicket(
-null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
+null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
 as Product,
   ));
 }
@@ -405,10 +405,10 @@ as Product,
 
 
 class _UpdateTicket implements ProductEvent {
-  const _UpdateTicket(this.product);
+  const _UpdateTicket(this.model);
   
 
- final  Product product;
+ final  Product model;
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -420,16 +420,16 @@ _$UpdateTicketCopyWith<_UpdateTicket> get copyWith => __$UpdateTicketCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateTicket&&(identical(other.product, product) || other.product == product));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateTicket&&(identical(other.model, model) || other.model == model));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,product);
+int get hashCode => Object.hash(runtimeType,model);
 
 @override
 String toString() {
-  return 'ProductEvent.updateTicket(product: $product)';
+  return 'ProductEvent.updateTicket(model: $model)';
 }
 
 
@@ -440,7 +440,7 @@ abstract mixin class _$UpdateTicketCopyWith<$Res> implements $ProductEventCopyWi
   factory _$UpdateTicketCopyWith(_UpdateTicket value, $Res Function(_UpdateTicket) _then) = __$UpdateTicketCopyWithImpl;
 @useResult
 $Res call({
- Product product
+ Product model
 });
 
 
@@ -457,9 +457,9 @@ class __$UpdateTicketCopyWithImpl<$Res>
 
 /// Create a copy of ProductEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? product = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? model = null,}) {
   return _then(_UpdateTicket(
-null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
+null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
 as Product,
   ));
 }
