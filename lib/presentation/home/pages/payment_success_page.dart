@@ -5,9 +5,11 @@ import 'package:ticketing_princes/core/components/components.dart';
 import 'package:ticketing_princes/core/constants/colors.dart';
 import 'package:ticketing_princes/core/core.dart';
 import 'package:ticketing_princes/core/extensions/build_context_ext.dart';
+import 'package:ticketing_princes/presentation/home/model/order_model.dart';
 
 class PaymentSuccessPage extends StatelessWidget {
-  const PaymentSuccessPage({super.key});
+  final OrderModel order;
+  const PaymentSuccessPage({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
